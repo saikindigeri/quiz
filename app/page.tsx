@@ -6,6 +6,7 @@ import { getQuestions } from './services/questionService';
 import Overview from './components/overview';
 import { User, Bell, SunMoon } from 'lucide-react'; // Using lucide-react icons for profile and notifications
 import Results from './components/results';
+import Modal from './components/Modal';
 
 interface Question {
   id: string;
@@ -19,7 +20,9 @@ const Home = () => {
   const [answers, setAnswers] = useState<{ [key: string]: string }>({});
   const [flags, setFlags] = useState<{ [key: string]: boolean }>({});
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [showModal, setShowModal] = useState(false); // Modal visibility state
   const [activeTab, setActiveTab] = useState('exam'); // State to manage active tab
+  const [unansweredCount, setUnansweredCount] = useState(0);
 
   useEffect(() => {
     getQuestions().then(setQuestions);
@@ -47,12 +50,26 @@ const Home = () => {
 
   const handleSubmit = () => {
     const unanswered = questions.filter(q => !answers[q.id]);
+
+    console.log(unanswered.length)
     if (unanswered.length > 0) {
-      if (!confirm(`You have unanswered questions: ${unanswered.length}. Do you want to submit?`)) {
-        return;
-      }
+      // Set unanswered count
+      setShowModal(true); 
+      setUnansweredCount(unanswered.length); // Show the modal if there are unanswered questions
+    } else {
+      alert('Quiz submitted successfully!');
     }
-    alert('Quiz submitted successfully!');
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false); // Close modal without submission
+  };
+
+  // Submit the quiz
+  const handleModalSubmit = () => {
+    // Perform quiz submission logic here
+    
+    setShowModal(false); // Close modal and submit
   };
 
   return (
@@ -142,6 +159,14 @@ const Home = () => {
       )}
     </div>
     <Results />
+
+    <Modal
+        showModal={showModal}
+        onClose={handleModalClose}
+        onSubmit={handleModalSubmit}
+        unansweredCount={unansweredCount}
+       
+      />
   </div>
   
   

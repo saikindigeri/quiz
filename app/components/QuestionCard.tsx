@@ -73,7 +73,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row justify-between items-center mt-auto space-y-4 sm:space-y-0 sm:space-x-4">
         {/* End and Submit Button */}
-        <Button variant="secondary" className="text-white bg-black rounded-2xl w-full sm:w-auto" onClick={() => handleSubmit()}>
+        <Button variant="secondary" className="text-white bg-black rounded-2xl w-full sm:w-auto hover:bg-gray-400" onClick={() => handleSubmit()}>
           End and Submit
         </Button>
 
@@ -89,16 +89,18 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
           </Button>
 
           <Button
-            onClick={() => handleFlag(questionId)}
-            className="flex items-center justify-center px-4 py-2 bg-gray-400 text-black rounded-2xl w-full sm:w-auto"
-          >
-            {flags[questionId] ? 'Unflag' : 'Flag'} <Flag className="ml-2" />
-          </Button>
+  onClick={() => handleFlag(questionId)}
+  className="flex items-center justify-center px-4 py-2 bg-orange-500 text-white rounded-2xl w-full sm:w-auto hover:bg-orange-600"
+>
+  {flags[questionId] ? 'Unflag' : 'Flag'}
+  <Flag className="ml-2 bg-orange-700 p-1 rounded-full fill text-white" />
+</Button>
+
 
           <Button
             onClick={() => handleNavigation('next')}
             disabled={currentIndex === totalQuestions - 1}
-            className="flex items-center justify-center px-4 py-2 bg-gray-400 text-black rounded-2xl w-full sm:w-auto"
+            className="flex items-center justify-center px-4 py-2 bg-gray-400 hover:bg-gray-200 text-black rounded-2xl w-full sm:w-auto"
           >
             Next <ChevronRight className="ml-2" />
           </Button>

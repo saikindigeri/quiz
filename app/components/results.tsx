@@ -4,6 +4,7 @@ import { Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Piechart } from './Piechart';
+import Modal from './Modal';
 
 const Results = () => {
   const chartData = {
@@ -77,10 +78,10 @@ const Results = () => {
       {/* Bottom Section: Buttons */}
       <div className="mt-6 flex flex-wrap justify-center md:justify-between gap-4">
         <Button className="bg-gray-800 text-white py-3 px-6 rounded-lg">View Course Details</Button>
-        <Button className="flex items-center gap-2 bg-gray-200 text-gray-800 py-3 px-6 rounded-lg">
+        <Button className="flex items-center gap-2 bg-gray-200 text-gray-800 py-3 px-6 rounded-lg hover:bg-white">
           Consult Assistant <PhoneForwarded size={20} />
         </Button>
-        <Button className="flex items-center gap-2 bg-gray-200 text-gray-800 py-3 px-6 rounded-lg">
+        <Button className="flex items-center gap-2 bg-gray-200 text-gray-800 py-3 px-6 rounded-lg  hover:bg-white">
           Copy URL <Copy size={20} />
         </Button>
       </div>

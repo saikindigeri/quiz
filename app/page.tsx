@@ -73,7 +73,7 @@ const Home = () => {
   };
 
   return (
-    <div className={`w-full p-4 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
+    <div className={'w-full p-4    bg-white text-black'}>
       {/* Header */}
       <div className="sticky top-0 z-10 bg-white bg-opacity-90">
         <div className="flex justify-between items-center mb-4">

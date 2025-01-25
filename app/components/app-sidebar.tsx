@@ -1,6 +1,6 @@
-import { AlignJustify, LayoutDashboard, Mail, Search, Settings } from "lucide-react";
-import { ChartNoAxesColumn } from "lucide-react";
-
+'use client'
+import { useState } from "react";
+import { AlignJustify, LayoutDashboard, Mail, Search, Settings, ChartNoAxesColumn } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -41,8 +41,18 @@ const items = [
 ];
 
 export function AppSidebar() {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false); // Track sidebar state (collapsed or expanded)
+
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(!isSidebarCollapsed); // Toggle the sidebar state
+  };
+
   return (
-    <Sidebar className="bg-white text-white h-screen p-4">
+    <Sidebar
+      className={`bg-white text-white h-screen p-4 transition-all duration-300 ${
+        isSidebarCollapsed ? "w-16" : "w-64"
+      }`}
+    >
       <div className="flex justify-between items-center mb-8">
         <div className="flex items-center">
           <svg
@@ -78,15 +88,17 @@ export function AppSidebar() {
               fill="#EC6316"
             />
           </svg>
-          <h1 className="font-semibold text-2xl ml-2 text-black">ELT Global</h1>
+          {!isSidebarCollapsed && (
+            <h1 className="font-semibold text-2xl ml-2 text-black">ELT Global</h1>
+          )}
         </div>
 
-        <div className="flex items-center cursor-pointer">
+        <div className="flex items-center cursor-pointer" onClick={toggleSidebar}>
           <AlignJustify className="text-gray-400 hover:text-orange-500" size={24} />
         </div>
       </div>
 
-      <SidebarContent>
+      <SidebarContent className="overflow-auto">
         <SidebarGroup>
           <SidebarGroupLabel className="text-gray-400">GENERAL</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -97,10 +109,8 @@ export function AppSidebar() {
                     href={item.url}
                     className="flex items-center p-3 rounded-2xl text-black hover:bg-orange-500 hover:text-white transition-colors duration-300"
                   >
-                    <item.icon
-                      className="mr-3 text-xl text-orange-500 group-hover:text-white"
-                    />
-                    <span className="font-medium">{item.title}</span>
+                    <item.icon className="mr-3 text-xl text-orange-500 group-hover:text-white" />
+                    {!isSidebarCollapsed && <span className="font-medium">{item.title}</span>}
                   </a>
                 </SidebarMenuItem>
               ))}

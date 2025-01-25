@@ -5,6 +5,8 @@ interface NavigationButtonsProps {
     handleFlag: (questionId: string) => void;
     flags: { [key: string]: boolean };
     questionId: string;
+    handleSubmit:void;
+    
   }
   
   const NavigationButtons: React.FC<NavigationButtonsProps> = ({ 
@@ -13,10 +15,13 @@ interface NavigationButtonsProps {
     handleNavigation, 
     handleFlag, 
     flags, 
-    questionId 
+    questionId ,
+    handleSubmit,
   }) => {
     return (
       <div className="flex justify-between mt-4">
+
+<button className="bg-red-600 text-white px-6 py-2 rounded" onClick={()=>handleSubmit()}>End and Submit</button>
         <button 
           onClick={() => handleNavigation('prev')} 
           disabled={currentIndex === 0}

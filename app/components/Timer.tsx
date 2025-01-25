@@ -1,25 +1,32 @@
 import { useState, useEffect } from 'react';
 
-const Timer = () => {
-  const [timeLeft, setTimeLeft] = useState(60 * 60);
+const Timer = ({ onTimeUp }) => {
+  const [timeLeft, setTimeLeft] = useState(3600); // 1 hour (3600 seconds)
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
+    if (timeLeft <= 0) {
+      onTimeUp();
+      return;
+    }
+
+    const timerId = setInterval(() => {
+      setTimeLeft(prevTime => prevTime - 1);
     }, 1000);
 
-    return () => clearInterval(timer);
-  }, []);
+    return () => clearInterval(timerId);
+  }, [timeLeft, onTimeUp]);
 
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
+  const formatTime = (seconds) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+    return `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
   return (
-    <div className="text-right text-lg font-bold mb-4">
-      Time Remaining: <span className="text-red-600">{formatTime(timeLeft)}</span>
+    <div className="text-center mb-4 text-lg ">
+      <span className="text-gray-500 font-italic">{formatTime(timeLeft)}</span>
     </div>
   );
 };

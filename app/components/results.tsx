@@ -1,10 +1,12 @@
 import { Button } from '@/components/ui/button';
 import { PhoneForwarded, Copy } from 'lucide-react';
-import { Pie } from 'react-chartjs-2';
+
 import 'chart.js/auto';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+
+
 import { Piechart } from './Piechart';
-import Modal from './Modal';
+
+
 
 const Results = () => {
   const chartData = {
@@ -24,29 +26,7 @@ const Results = () => {
     ],
   };
 
-  const chartOptions = {
-    plugins: {
-      datalabels: {
-        anchor: 'end',  // Positions the labels outside the chart
-        align: 'end',    // Align the label towards the outside
-        formatter: (value: number, context: any) => {
-          return `${chartData.labels[context.dataIndex]}: ${value}%`;
-        },
-        color: (context: any) => chartData.datasets[0].backgroundColor[context.dataIndex], // Color same as section
-        font: {
-          weight: 'bold',
-          size: 14,
-        },
-        offset: 20,
-        clamp: true,
-      },
-    },
-    layout: {
-      padding: 30,
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-  };
+
 
   return (
     <div className="bg-gray-100  mt-20 h-[90vh] place-items-center align-center p-8 rounded-lg shadow-lg max-w-4xl mx-auto">

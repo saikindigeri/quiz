@@ -4,10 +4,12 @@
 import { useState, useEffect } from 'react';
 import QuestionCard from './components/QuestionCard';
 import { getQuestions } from './services/questionService';
-import Overview from './components/Overview';
+
 import { User, Bell, SunMoon } from 'lucide-react';
-import Results from './components/Results';
+
 import Modal from './components/Modal';
+import Overview from './components/overview';
+import Results from './components/results';
 
 interface Question {
   id: string;
@@ -24,7 +26,7 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [activeTab, setActiveTab] = useState('exam');
   const [unansweredCount, setUnansweredCount] = useState(0);
-  const [showAllQuestions, setShowAllQuestions] = useState(false);
+
 
   useEffect(() => {
     getQuestions().then(setQuestions);
@@ -68,9 +70,7 @@ const Home = () => {
     setShowModal(false);
   };
 
-  const toggleShowAllQuestions = () => {
-    setShowAllQuestions(!showAllQuestions);
-  };
+
 
   return (
     <div className={'w-full p-4    bg-white text-black'}>
@@ -109,8 +109,8 @@ const Home = () => {
               answers={answers}
               handleDirectNavigation={handleDirectNavigation}
               currentIndex={currentIndex}
-              showAllQuestions={showAllQuestions}
-              toggleShowAllQuestions={toggleShowAllQuestions}
+            
+             
             />
           </div>
         )}

@@ -9,7 +9,7 @@ import { Piechart } from './Piechart';
 
 
 const Results = () => {
-  const chartData = {
+  /*const chartData = {
     labels: ['CMA IND', 'CA', 'CS', 'ACCA', 'CMA USA'],
     datasets: [
       {
@@ -23,7 +23,7 @@ const Results = () => {
         ],
         borderWidth: 1,
       },
-    ],
+    ],*/
   };
 
 

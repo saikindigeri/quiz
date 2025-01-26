@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
 
-const Timer = ({ onTimeUp }) => {
+interface TimerProps{
+  onTimeUp:()=>void;
+}
+
+
+
+const Timer:React.FC<TimerProps> = ({ onTimeUp }) => {
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hour (3600 seconds)
 
   useEffect(() => {
@@ -16,13 +22,14 @@ const Timer = ({ onTimeUp }) => {
     return () => clearInterval(timerId);
   }, [timeLeft, onTimeUp]);
 
-  const formatTime = (seconds) => {
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    const secs = seconds % 60;
-
-    return `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+  const formatTime = (seconds: number): string => {
+    const hours: number = Math.floor(seconds / 3600);
+    const minutes: number = Math.floor((seconds % 3600) / 60);
+    const secs: number = seconds % 60;
+  
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   };
+  
 
   return (
     <div className="text-center mb-4 text-lg ">

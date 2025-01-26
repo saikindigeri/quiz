@@ -9,46 +9,48 @@ import { Piechart } from './Piechart';
 
 
 const Results = () => {
-  const chartData = {
-    labels: ['CMA IND', 'CA', 'CS', 'ACCA', 'CMA USA'],
-    datasets: [
-      {
-        data: [21.5, 22.5, 16, 25, 16.7],
-        backgroundColor: [
-          '#FFA500', // CMA IND - Orange
-          '#FF8C00', // CA - Dark Orange
-          '#FF7F50', // CS - Coral
-          '#FF6347', // ACCA - Tomato
-          '#FF4500', // CMA USA - Orange Red
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
 
-  const chartOptions = {
-    plugins: {
-      datalabels: {
-        anchor: 'end',  // Positions the labels outside the chart
-        align: 'end',    // Align the label towards the outside
-        formatter: (value: number, context: any) => {
-          return `${chartData.labels[context.dataIndex]}: ${value}%`;
-        },
-        color: (context: any) => chartData.datasets[0].backgroundColor[context.dataIndex], // Color same as section
-        font: {
-          weight: 'bold',
-          size: 14,
-        },
-        offset: 20,
-        clamp: true,
-      },
-    },
-    layout: {
-      padding: 30,
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-  };
+
+  // const chartData = {
+  //   labels: ['CMA IND', 'CA', 'CS', 'ACCA', 'CMA USA'],
+  //   datasets: [
+  //     {
+  //       data: [21.5, 22.5, 16, 25, 16.7],
+  //       backgroundColor: [
+  //         '#FFA500', // CMA IND - Orange
+  //         '#FF8C00', // CA - Dark Orange
+  //         '#FF7F50', // CS - Coral
+  //         '#FF6347', // ACCA - Tomato
+  //         '#FF4500', // CMA USA - Orange Red
+  //       ],
+  //       borderWidth: 1,
+  //     },
+  //   ],
+  // };
+
+  // const chartOptions = {
+  //   plugins: {
+  //     datalabels: {
+  //       anchor: 'end',  // Positions the labels outside the chart
+  //       align: 'end',    // Align the label towards the outside
+  //       formatter: (value: number, context: any) => {
+  //         return `${chartData.labels[context.dataIndex]}: ${value}%`;
+  //       },
+  //       color: (context: any) => chartData.datasets[0].backgroundColor[context.dataIndex], // Color same as section
+  //       font: {
+  //         weight: 'bold',
+  //         size: 14,
+  //       },
+  //       offset: 20,
+  //       clamp: true,
+  //     },
+  //   },
+  //   layout: {
+  //     padding: 30,
+  //   },
+  //   responsive: true,
+  //   maintainAspectRatio: false,
+  // };
 
   return (
     <div className="bg-gray-100  mt-20 h-[90vh] place-items-center align-center p-8 rounded-lg shadow-lg max-w-4xl mx-auto">

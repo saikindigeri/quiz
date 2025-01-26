@@ -21,7 +21,7 @@ interface NavigationButtonsProps {
     return (
       <div className="flex justify-between mt-4">
 
-<button className="bg-red-600 text-white px-6 py-2 rounded" onClick={handleSubmit}>End and Submit</button>
+<button className="bg-red-600 text-white px-6 py-2 rounded" onClick={()=>(handleSubmit)}>End and Submit</button>
         <button 
           onClick={() => handleNavigation('prev')} 
           disabled={currentIndex === 0}

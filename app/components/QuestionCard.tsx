@@ -10,15 +10,18 @@ interface QuestionCardProps {
     id: string;
     question: string;
     options: Array<{ id: string; option: string }>;
-    currentIndex: number;
-    totalQuestions: number;
-    handleNavigation: (direction: 'prev' | 'next') => void;
-    handleFlag: (questionId: string) => void;
-    flags: { [key: string]: boolean };
-    questionId: string;
-    handleSubmit: void;
+   
+    
+  
   };
   answer?: string;
+  currentIndex: number;
+  totalQuestions: number;
+  handleNavigation: (direction: 'prev' | 'next') => void;
+  handleFlag: (questionId: string) => void;
+  flags: { [key: string]: boolean };
+  questionId: string;
+  handleSubmit: () => void;
   handleAnswer: (questionId: string, optionId: string) => void;
 }
 

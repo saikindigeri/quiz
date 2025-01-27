@@ -12,7 +12,7 @@ This is a web-based quiz application built using React, TypeScript, and Tailwind
 ## Installation
 
 1. Clone the repository:  
-   `git clone <repository-url>`
+   `git clone https://github.com/saikindigeri/quiz.git
 
 
 2. Navigate to the project folder:  
